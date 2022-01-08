@@ -24,6 +24,7 @@ urlpatterns = [
     
     path('', include('travello.urls')), # Now this will be a homepage
     path('accounts/', include('accounts.urls')),
+    path('destination/', include('destination.urls')),
     path('admin/', admin.site.urls),
 ]
 
