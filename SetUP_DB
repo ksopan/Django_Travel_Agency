@@ -1,0 +1,58 @@
+How to use pgAdmin V4 on Mac
+First Start Postresql ... If Ut alreaady started do not need to start it again
+(1)pg_ctl -D /usr/local/var/postgres start
+(2) Then Open pgAdmin Mac App
+(3) Click on "Add New Server" 
+(4) Pop Up menu will open (Since we already have waterwatch sql database) we can use those credentials to start new server
+(5) Give Servername : my_local_server
+(6) Next Tab: Host: localhost, Username: waterwatch, pass: eurotel_81
+(7) Create new Seever
+(9) Once new server created right Click on it and create New Database
+(10) Insert Database credentials in the settings.py file
+(11) pip install psycopg3
+(12) pip install Pillow
+(13) Craete database Model in models.py
+(14) Need to define "'travello.apps.TravelloConfig'" in Settings.py into INSTALLED_APP list
+
+(15) Migrate Tables to Database as Folllow
+python manage.py makemigrations    # This commands check if you have defined datbase table corrrectly
+python manage.py sqlmigrate travello 0001 # This will transfer database values of app travello to 0001.sqlite 
+python manage.py migrate ## Migrate empty tables to database
+
+
+Django Project Setup
+(16) Create Project
+     django-admin startproject TravelAgency .
+(17) create directories, templates, assets, static
+(18) create app as follows
+     python manage.py startapp travello
+
+(19) After putting all requires JS and HTML, CSS in above files run the following command
+ python manage.py collectstatic
+(20) Insert Jinja syntax as showwn in the index.html
+
+(21) To create Admin Superuser
+python manage.py createsuperuser
+
+(22) travello/admin.py 
+In this file we can just call the import the model and it will give us the backend to wok on such as we will get an access to add images, cities etc.
+
+(23) ## This is the location where user uploaded files will be stroe.
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+(24) Make changes in the TravelAgency/urls.py
+from django.conf import settings
+from django.conf.urls.static import static
+urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+(25) In order to fetch the data from the Database using backend just call the Model object in travello/views.py as follows
+dests = Destination.objects.all()
+
+Until Above The user was Admin 
+
+(26) Let's Create Normal Users
+(a) Create Registration Form
+
+NOTES: In Main project Directory i.e. TravelAgency/urls.py ... path('', include('travello.urls')), # Now this will be a homepage 
+      In App directory Define functions in the travello/views.py, and include views.py path into travello/ursl.py 
