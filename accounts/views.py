@@ -52,6 +52,3 @@ def register(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
-
-def new_dest(request):
-        return render(request, 'destination.html')  
