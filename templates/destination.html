@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,8 +6,10 @@
 </head>
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-
+    {%for dest in dests%}
+    <p> The {{ dest.name }} is awesome.</p>
+    <p> Because {{ dest.desc }} .</p>
+    {%endfor%}
+    
 </body>
 </html>
