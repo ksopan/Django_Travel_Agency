@@ -1,0 +1,16 @@
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+    {%for dest in dests%}
+    <p> The {{ dest.name }} is awesome.</p>
+    <p> Because {{ dest.desc }} .</p>
+    {%endfor%}
+    
+</body>
+</html>
