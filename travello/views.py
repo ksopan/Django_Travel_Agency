@@ -30,3 +30,11 @@ def index(request):
     dests = Destination.objects.all()
     
     return render(request,"index.html",{'dests': dests})
+
+def about(request):
+    print("I am in About")
+    return render(request,'about.html', {})
+
+def home(request):
+    print("I am in Home")
+    return redirect('/')

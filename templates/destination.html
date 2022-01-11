@@ -117,7 +117,6 @@
         <div class="destination_text text-center">
             {%for dest in dests%}
             <h3> {{ dest.name }}</h3>
-            <h3> {{ dest.desc }} .</h3>
             {%endfor%}
 
         </div>
@@ -127,11 +126,13 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-9">
-                    <div class="destination_info">
+                    <div class="single_destination">
                         {%for dest in dests%}
-                        <h3> Description of {{ dest.name }}</h3>
-                        <h3> {{ dest.desc }}.</h3>
+                        <h3>Description of {{ dest.name }} </h3>
+                        <P>{{dest.desc}}</P>
                         {%endfor%}
+                    </div>
+     
                     <div class="single_destination">
                        {%for dest in dests%}
                         <h4>Price: </h4>
